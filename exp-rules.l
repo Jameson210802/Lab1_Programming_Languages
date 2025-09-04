@@ -45,7 +45,8 @@ YEAR   {DIG}{DIG}{DIG}{DIG}
 %%
 [ \t\r]+        { /* skip spaces" ", tabs"\t", OR carriage returns "\r"... which appear one or more times "+" */ }
 
- /* TODO: Increment line_number whenever there is a newline character
+ /* TODO: Increment line_number whenever there is a newline character */
+[\n]      { return line_number+1;}
 
  /* Example: punctuation */
 ","             { return SEPARATOR; }
@@ -53,8 +54,17 @@ YEAR   {DIG}{DIG}{DIG}{DIG}
  /* Example: simple words (case-insensitive first letter) */
 [Yy]es          { return YES; }
 [Nn]o           { return NO; }
+[Dd]ate         { return DATE; }
+[Uu]nknown      { return UNKNOWN_VALUE; }
+[Mm]issing      { return MISSING; }
+[Ll]aboratory-confirmed       { return LABORATORY; }
+[Pp]robable     { return PROBABLE; }
+[Mm]ale         { return MALE;}
+[Ff]emale       { return FEMALE; }
+[Oo]ther        { return OTHER; }
 
- /* TODO: Add rule for Date
+
+ /* TODO: Add rule for Date */
  /* TODO: Add rule for "Unknown" → UNKNOWN_VALUE */
  /* TODO: Add rule for "Missing" → MISSING */
  /* TODO: Add rules for Case Status (Laboratory-confirmed, Probable) */
