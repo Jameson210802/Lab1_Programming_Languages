@@ -36,6 +36,7 @@
  ------------------------------*/
 DIG    [0-9]
 YEAR   {DIG}{DIG}{DIG}{DIG}
+MONTHDAY {DIG}{DIG}
 
  /*------------------------------
   Section C: Rules
@@ -54,7 +55,7 @@ YEAR   {DIG}{DIG}{DIG}{DIG}
  /* Example: simple words (case-insensitive first letter) */
 [Yy]es          { return YES; }
 [Nn]o           { return NO; }
-[Dd]ate         { return DATE; }
+{YEAR}\/{MONTHDAY}\/{MONTHDAY}         { return DATE; }
 [Uu]nknown      { return UNKNOWN_VALUE; }
 [Mm]issing      { return MISSING; }
 [Ll]aboratory-confirmed       { return LABORATORY; }
