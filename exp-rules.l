@@ -1,5 +1,5 @@
  /*********************************************************************
-  Name: Any Student             NetID: as3
+  Name: Jamie Anderson             NetID: jla656
   Course: CSE 4714              
   Lab: 01 - Lexical Analyzer 
   Purpose of File: Contains the ....
