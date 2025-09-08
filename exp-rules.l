@@ -47,7 +47,13 @@ MONTHDAY {DIG}{DIG}
 [ \t\r]+        { /* skip spaces" ", tabs"\t", OR carriage returns "\r"... which appear one or more times "+" */ }
 
  /* TODO: Increment line_number whenever there is a newline character */
-[\n]      { return line_number+1;}
+\n { line_number++;}
+
+
+
+
+
+
 
  /* Example: punctuation */
 ","             { return SEPARATOR; }
@@ -71,7 +77,15 @@ MONTHDAY {DIG}{DIG}
 50" "-" "59" "[Yy]ears      {return AGE_5X;}
 60" "-" "69" "[Yy]ears      {return AGE_6X;}
 70" "-" "79" "[Yy]ears      {return AGE_7X;}
-80\+" "[Yy]ears
+80\+" "[Yy]ears             {return AGE_8X;}
+
+\"[Ww]hite," "[Nn]on-[Hh]ispanic\" {return WHITE;} // ask about this
+\"[Mm]ultiple\/[Oo]ther," "[Nn]on-[Hh]ispanic\"     {return MULTIPLE_OTHER;}
+\"[Aa]merican" "Indian" "\/" "[Aa]laska" "[Nn]ative," "[Nn]on-[Hh]ispanic\" {return NATIVE_AMERICAN;}
+\"[Aa]sian," "[Nn]on-[Hh]ispanic\" {return ASIAN;}
+\"[Bb]lack," "[Nn]on-[Hh]ispanic\" {return BLACK;}
+\"[Hh]ispanic\/[Ll]atino\" {return HISPANIC;}
+\"[Nn]ative" "[Hh]awaiian" "\/" "[Oo]ther" "Pacific" "[Ii]slander," "[Nn]on-[Hh]ispanic\"   {return PACIFIC_ISLANDER;}
 
 
  /* TODO: Add rule for Date */
