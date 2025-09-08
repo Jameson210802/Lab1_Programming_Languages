@@ -58,11 +58,20 @@ MONTHDAY {DIG}{DIG}
 {YEAR}\/{MONTHDAY}\/{MONTHDAY}         { return DATE; }
 [Uu]nknown      { return UNKNOWN_VALUE; }
 [Mm]issing      { return MISSING; }
-[Ll]aboratory-confirmed       { return LABORATORY; }
-[Pp]robable     { return PROBABLE; }
+[Ll]aboratory-confirmed" "[Cc]ase      { return LABORATORY; }
+[Pp]robable" "[Cc]ase      { return PROBABLE; }
 [Mm]ale         { return MALE;}
 [Ff]emale       { return FEMALE; }
 [Oo]ther        { return OTHER; }
+
+0" "-" "9" "[Yy]ears      {return AGE_0X;}
+10" "-" "19" "[Yy]ears      {return AGE_1X;}
+20" "-" "39" "[Yy]ears      {return AGE_2X;}
+40" "-" "49" "[Yy]ears      {return AGE_4X;}
+50" "-" "59" "[Yy]ears      {return AGE_5X;}
+60" "-" "69" "[Yy]ears      {return AGE_6X;}
+70" "-" "79" "[Yy]ears      {return AGE_7X;}
+80\+" "[Yy]ears
 
 
  /* TODO: Add rule for Date */
